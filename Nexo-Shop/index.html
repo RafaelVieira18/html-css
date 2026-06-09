@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/favicon.ico.png" type="image/x-icon">
+    <title>Nexo Shop - Produtos de Qualidade</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0A2463',
+                        secondary: '#FF6B00',
+                        dark: '#1f2937',
+                        light: '#f3f4f6'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .scroll-smooth {
+                scroll-behavior: smooth;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans text-dark bg-light scroll-smooth">
+
+    <header class="bg-white shadow-md fixed w-full z-50">
+        <div class="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center mb-3 md:mb-0 gap-3">
+                <!-- LOGO ADICIONADO -->
+                <img src="img/nexo_shop.png" alt="Nexo Shop" class="h-12 w-auto">
+                <h1 class="text-[clamp(1.2rem,3vw,1.8rem)] font-bold">
+                    <span class="text-primary">Nexo</span><span class="text-secondary"> Shop</span>
+                </h1>
+            </div>
+            
+            <nav class="w-full md:w-auto">
+                <ul class="flex flex-wrap justify-center gap-6 text-gray-700 font-medium">
+                    <li><a href="#inicio" class="hover:text-primary transition-colors">Início</a></li>
+                    <li><a href="#produtos" class="hover:text-primary transition-colors">Produtos</a></li>
+                    <li><a href="#sobre" class="hover:text-primary transition-colors">Sobre</a></li>
+                    <li><a href="#contato" class="hover:text-primary transition-colors">Contato</a></li>
+                    <li>
+                        <button onclick="abrirCarrinho()" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors flex items-center gap-2 relative">
+                            <i class="fa fa-shopping-cart"></i>
+                            <span>Carrinho</span>
+                            <span id="quantidadeCarrinho" class="absolute -top-2 -right-2 bg-secondary text-white text-xs w-5 h-5 flex items-center justify-center rounded-full hidden">0</span>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="inicio" class="pt-32 pb-20 bg-gradient-to-b from-blue-50 to-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2 text-center md:text-left">
+                    <h2 class="text-[clamp(1.8rem,5vw,3rem)] font-bold text-dark leading-tight mb-4">
+                        Produtos de Qualidade <br> Para Você
+                    </h2>
+                    <p class="text-gray-600 text-lg mb-8 max-w-xl mx-auto md:mx-0">
+                        Encontre os melhores produtos com preços justos, entrega rápida e atendimento especializado.
+                    </p>
+                    <a href="#produtos" class="bg-secondary text-white px-8 py-3 rounded-lg text-lg font-medium hover:bg-secondary/90 transition-colors inline-block shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all">
+                        Ver Produtos
+                    </a>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="img/banner.png" alt="Destaque da loja" class="rounded-xl shadow-2xl w-full h-auto object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="produtos" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,4vw,2.5rem)] font-bold text-dark mb-2">Nossos Produtos</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Seleção especial de produtos escolhidos com cuidado para garantir sua satisfação.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Produto 1 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow group">
+                    <div class="h-56 overflow-hidden">
+                        <img src="img/capinha_de_celular.png" alt="Capa Proteção Premium Universal" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-xl mb-2">Capa Proteção Premium Universal</h3>
+                        <p class="text-gray-600 text-sm mb-4">Capa resistente, anti-queda, vários modelos e cores.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-bold text-xl">R$ 29,90</span>
+                            <button onclick="adicionarAoCarrinho('Capa Proteção Premium Universal', 29.90)" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors">
+                                Comprar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produto 2 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow group">
+                    <div class="h-56 overflow-hidden">
+                        <img src="img/pelicula_de_vidro.png" alt="Película de Vidro 9H" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-xl mb-2">Película de Vidro 9H</h3>
+                        <p class="text-gray-600 text-sm mb-4">Alta proteção, instalação fácil, compatível com todos modelos.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-bold text-xl">R$ 19,90</span>
+                            <button onclick="adicionarAoCarrinho('Película de Vidro 9H', 19.90)" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors">
+                                Comprar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produto 3 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow group">
+                    <div class="h-56 overflow-hidden">
+                        <img src="img/carregador.png" alt="Carregador Rápido 3.1A" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-xl mb-2">Carregador Rápido 3.1A</h3>
+                        <p class="text-gray-600 text-sm mb-4">Carga 2x mais rápida, cabo incluso, durável.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-bold text-xl">R$ 39,90</span>
+                            <button onclick="adicionarAoCarrinho('Carregador Rápido 3.1A', 39.90)" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors">
+                                Comprar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produto 4 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow group">
+                    <div class="h-56 overflow-hidden">
+                        <img src="img/fone_bluetooth.png" alt="Fone Bluetooth Sem Fio" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-xl mb-2">Fone Bluetooth Sem Fio</h3>
+                        <p class="text-gray-600 text-sm mb-4">Som estéreo, bateria dura até 5h, confortável.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-bold text-xl">R$ 59,90</span>
+                            <button onclick="adicionarAoCarrinho('Fone Bluetooth Sem Fio', 59.90)" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors">
+                                Comprar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produto 5 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow group">
+                    <div class="h-56 overflow-hidden">
+                        <img src="img/power_banck.png" alt="Power Bank 10.000mAh" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-xl mb-2">Power Bank 10.000mAh</h3>
+                        <p class="text-gray-600 text-sm mb-4">Leve, cabe no bolso, carrega 2 celulares.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-bold text-xl">R$ 49,90</span>
+                            <button onclick="adicionarAoCarrinho('Power Bank 10.000mAh', 49.90)" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors">
+                                Comprar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produto 6 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow group">
+                    <div class="h-56 overflow-hidden">
+                        <img src="img/suporte_veicular.png" alt="Suporte Veicular Magnético" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-xl mb-2">Suporte Veicular Magnético</h3>
+                        <p class="text-gray-600 text-sm mb-4">Firme, não cai, instalação simples.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-bold text-xl">R$ 24,90</span>
+                            <button onclick="adicionarAoCarrinho('Suporte Veicular Magnético', 24.90)" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors">
+                                Comprar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produto 7 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow group">
+                    <div class="h-56 overflow-hidden">
+                        <img src="img/copo_termico.png" alt="Copo Térmico 500ml" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-xl mb-2">Copo Térmico 500ml</h3>
+                        <p class="text-gray-600 text-sm mb-4">Mantém gelado/quente por 6h, sem vazamento.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-bold text-xl">R$ 34,90</span>
+                            <button onclick="adicionarAoCarrinho('Copo Térmico 500ml', 34.90)" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors">
+                                Comprar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produto 8 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow group">
+                    <div class="h-56 overflow-hidden">
+                        <img src="img/potes_hermeticos.png" alt="Kit 3 Potes Herméticos" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-xl mb-2">Kit 3 Potes Herméticos</h3>
+                        <p class="text-gray-600 text-sm mb-4">Armazena alimentos, empilhável, livre de BPA.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-bold text-xl">R$ 42,90</span>
+                            <button onclick="adicionarAoCarrinho('Kit 3 Potes Herméticos', 42.90)" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors">
+                                Comprar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produto 9 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow group">
+                    <div class="h-56 overflow-hidden">
+                        <img src="img/organizdor_de_gavetas.png" alt="Organizador de Gavetas" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-xl mb-2">Organizador de Gavetas</h3>
+                        <p class="text-gray-600 text-sm mb-4">Deixa tudo arrumado, tamanhos variados.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-bold text-xl">R$ 27,90</span>
+                            <button onclick="adicionarAoCarrinho('Organizador de Gavetas', 27.90)" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors">
+                                Comprar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produto 10 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow group">
+                    <div class="h-56 overflow-hidden">
+                        <img src="img/pano_de_prato.png" alt="Jogo de 6 Panos de Prato" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-xl mb-2">Jogo de 6 Panos de Prato</h3>
+                        <p class="text-gray-600 text-sm mb-4">Alta absorção, durável, cores sortidas.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-bold text-xl">R$ 22,90</span>
+                            <button onclick="adicionarAoCarrinho('Jogo de 6 Panos de Prato', 22.90)" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors">
+                                Comprar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produto 11 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow group">
+                    <div class="h-56 overflow-hidden">
+                        <img src="img/facas.png" alt="Conjunto 4 Facas Inox" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-xl mb-2">Conjunto 4 Facas Inox</h3>
+                        <p class="text-gray-600 text-sm mb-4">Corte preciso, cabo ergonômico, afiado.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-bold text-xl">R$ 44,90</span>
+                            <button onclick="adicionarAoCarrinho('Conjunto 4 Facas Inox', 44.90)" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors">
+                                Comprar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produto 12 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow group">
+                    <div class="h-56 overflow-hidden">
+                        <img src="img/luva_cozinha.png" alt="Luva Térmica Cozinha" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-xl mb-2">Luva Térmica Cozinha</h3>
+                        <p class="text-gray-600 text-sm mb-4">Protege do calor, lavável.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-bold text-xl">R$ 18,90</span>
+                            <button onclick="adicionarAoCarrinho('Luva Térmica Cozinha', 18.90)" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors">
+                                Comprar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produto 13 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow group">
+                    <div class="h-56 overflow-hidden">
+                        <img src="img/cabo_usb.png" alt="Cabo USB Reforçado 2m" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-xl mb-2">Cabo USB Reforçado 2m</h3>
+                        <p class="text-gray-600 text-sm mb-4">Não desfia, compatível Android/iOS.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-bold text-xl">R$ 17,90</span>
+                            <button onclick="adicionarAoCarrinho('Cabo USB Reforçado 2m', 17.90)" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors">
+                                Comprar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produto 14 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow group">
+                    <div class="h-56 overflow-hidden">
+                        <img src="img/relogio_inteigente.png" alt="Pulseira para Relógio Inteligente" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-xl mb-2">Pulseira para Relógio Inteligente</h3>
+                        <p class="text-gray-600 text-sm mb-4">Várias cores, macia, fácil troca.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-bold text-xl">R$ 24,90</span>
+                            <button onclick="adicionarAoCarrinho('Pulseira para Relógio Inteligente', 24.90)" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors">
+                                Comprar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produto 15 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow group">
+                    <div class="h-56 overflow-hidden">
+                        <img src="img/lanterna.png" alt="Lanterna Recarregável LED" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-xl mb-2">Lanterna Recarregável LED</h3>
+                        <p class="text-gray-600 text-sm mb-4">Forte alcance, para emergências/uso diário.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-bold text-xl">R$ 29,90</span>
+                            <button onclick="adicionarAoCarrinho('Lanterna Recarregável LED', 29.90)" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors">
+                                Comprar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produto 16 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow group">
+                    <div class="h-56 overflow-hidden">
+                        <img src="img/gancho_resistente.png" alt="Gancho Adesivo Resistente" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-xl mb-2">Gancho Adesivo Resistente</h3>
+                        <p class="text-gray-600 text-sm mb-4">Suporta até 5kg, não danifica parede.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-bold text-xl">R$ 14,90</span>
+                            <button onclick="adicionarAoCarrinho('Gancho Adesivo Resistente', 14.90)" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors">
+                                Comprar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produto 17 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow group">
+                    <div class="h-56 overflow-hidden">
+                        <img src="img/frasco_de_creme.png" alt="Frasco Portátil para Viagem" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-xl mb-2">Frasco Portátil para Viagem</h3>
+                        <p class="text-gray-600 text-sm mb-4">Para cremes/xampus, vedado, prático.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-bold text-xl">R$ 16,90</span>
+                            <button onclick="adicionarAoCarrinho('Frasco Portátil para Viagem', 16.90)" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors">
+                                Comprar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produto 18 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow group">
+                    <div class="h-56 overflow-hidden">
+                        <img src="img/protetor_tomada.png" alt="Protetor de Tomada" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-xl mb-2">Protetor de Tomada</h3>
+                        <p class="text-gray-600 text-sm mb-4">Segurança para crianças, fácil instalar.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-bold text-xl">R$ 12,90</span>
+                            <button onclick="adicionarAoCarrinho('Protetor de Tomada', 12.90)" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors">
+                                Comprar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produto 19 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow group">
+                    <div class="h-56 overflow-hidden">
+                        <img src="img/ventilador_portatil.png" alt="Mini Ventilador Recarregável" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-xl mb-2">Mini Ventilador Recarregável</h3>
+                        <p class="text-gray-600 text-sm mb-4">Silencioso, ideal para mesa/viagem.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-bold text-xl">R$ 37,90</span>
+                            <button onclick="adicionarAoCarrinho('Mini Ventilador Recarregável', 37.90)" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors">
+                                Comprar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produto 20 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow group">
+                    <div class="h-56 overflow-hidden">
+                        <img src="img/espatula_siliconada.png" alt="Espátula de Silicone" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-xl mb-2">Espátula de Silicone</h3>
+                        <p class="text-gray-600 text-sm mb-4">Não risca panelas, resistente ao calor.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-bold text-xl">R$ 13,90</span>
+                            <button onclick="adicionarAoCarrinho('Espátula de Silicone', 13.90)" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors">
+                                Comprar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2">
+                    <img src="img/nexo_shop.png" alt="Sobre a Nexo Shop" class="rounded-xl shadow-xl w-full h-auto">
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="text-[clamp(1.5rem,4vw,2.5rem)] font-bold text-dark mb-4">Sobre a Nexo Shop</h2>
+                    <p class="text-gray-600 mb-4 leading-relaxed">
+                        Somos uma loja focada em oferecer produtos de alta qualidade, com preços acessíveis e um atendimento que coloca o cliente em primeiro lugar.
+                    </p>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Atuamos no mercado há mais de 5 anos, sempre buscando trazer novidades e garantir a melhor experiência de compra para você.
+                    </p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center gap-2 text-gray-700"><i class="fa fa-check-circle text-primary"></i> Produtos selecionados</li>
+                        <li class="flex items-center gap-2 text-gray-700"><i class="fa fa-check-circle text-primary"></i> Entrega para todo o Brasil</li>
+                        <li class="flex items-center gap-2 text-gray-700"><i class="fa fa-check-circle text-primary"></i> Suporte ao cliente 24h</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,4vw,2.5rem)] font-bold text-dark mb-2">Entre em Contato</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Tem alguma dúvida ou quer saber mais? Envie uma mensagem para nós.</p>
+            </div>
+
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-6">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center text-xl">
+                            <i class="fa fa-map-marker"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Endereço</h4>
+                            <p class="text-gray-600">Caçapava - SP, Brasil</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center text-xl">
+                            <i class="fa fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Telefone</h4>
+                            <p class="text-gray-600">(12) 9XXXX-XXXX</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center text-xl">
+                            <i class="fa fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">E-mail</h4>
+                            <p class="text-gray-600">contato@nexoshop.com.br</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4 mt-6">
+                        <a href="#" class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center hover:bg-primary hover:text-white transition-colors"><i class="fa fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center hover:bg-primary hover:text-white transition-colors"><i class="fa fa-facebook"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center hover:bg-primary hover:text-white transition-colors"><i class="fa fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <form class="space-y-4">
+                    <div>
+                        <input type="text" placeholder="Seu nome" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                    </div>
+                    <div>
+                        <input type="email" placeholder="Seu e-mail" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                    </div>
+                    <div>
+                        <textarea placeholder="Sua mensagem" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-primary text-white px-4 py-3 rounded-lg hover:bg-primary/90 transition-colors font-medium">
+                        Enviar Mensagem
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white py-10">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <div class="flex justify-center items-center gap-2 mb-4">
+                    <img src="img/nexo_shop.png" alt="Nexo Shop" class="h-8 w-auto">
+                    <h3 class="text-xl font-bold"><span class="text-primary">Nexo</span><span class="text-secondary"> Shop</span></h3>
+                </div>
+                <p class="text-gray-400 mb-6">Produtos de qualidade para você e sua família.</p>
+                <p class="text-gray-500 text-sm">© 2026 Nexo Shop - Todos os direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="modalCarrinho" class="fixed inset-0 bg-black/50 z-50 hidden items-center justify-center p-4">
+        <div class="bg-white rounded-xl w-full max-w-md max-h-[80vh] overflow-y-auto">
+            <div class="p-6 border-b flex justify-between items-center">
+                <h3 class="text-xl font-bold">Seu Carrinho</h3>
+                <button onclick="fecharCarrinho()" class="text-gray-500 hover:text-gray-700 text-xl">&times;</button>
+            </div>
+
+            <div id="itensCarrinho" class="p-6 space-y-4">
+                <p class="text-gray-500 text-center">Seu carrinho está vazio</p>
+            </div>
+
+            <div class="p-6 border-t">
+                <div class="flex justify-between font-bold text-lg mb-4">
+                    <span>Total:</span>
+                    <span id="totalCarrinho">R$ 0,00</span>
+                </div>
+                <button onclick="finalizarCompra()" class="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition-colors font-medium">
+                    Finalizar Compra pelo WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT 100% FUNCIONAL -->
+    <script>
+        // 🔴 COLOQUE SEU NÚMERO AQUI (só números, com DDD)
+        const numeroWhatsApp = "12999998888"; 
+        let carrinho = [];
+
+        // Adicionar produto ao carrinho
+        function adicionarAoCarrinho(nome, preco) {
+            carrinho.push({ nome, preco });
+            atualizarCarrinho();
+            
+            // Aviso visual
+            const aviso = document.createElement('div');
+            aviso.className = "fixed bottom-4 right-4 bg-green-600 text-white px-4 py-2 rounded-lg shadow-lg z-50";
+            aviso.textContent = `${nome} adicionado ao carrinho!`;
+            document.body.appendChild(aviso);
+            setTimeout(() => aviso.remove(), 3000);
+        }
+
+        // Atualizar contador do carrinho
+        function atualizarCarrinho() {
+            const qtdEl = document.getElementById('quantidadeCarrinho');
+            qtdEl.textContent = carrinho.length;
+            qtdEl.classList.toggle('hidden', carrinho.length === 0);
+        }
+
+        // Abrir modal do carrinho
+        function abrirCarrinho() {
+            const modal = document.getElementById('modalCarrinho');
+            const itensEl = document.getElementById('itensCarrinho');
+            const totalEl = document.getElementById('totalCarrinho');
+
+            itensEl.innerHTML = "";
+
+            if (carrinho.length === 0) {
+                itensEl.innerHTML = "<p class='text-gray-500 text-center'>Seu carrinho está vazio</p>";
+            } else {
+                let total = 0;
+                carrinho.forEach((item, index) => {
+                    total += item.preco;
+                    const itemEl = document.createElement('div');
+                    itemEl.className = "flex justify-between items-center border-b pb-2";
+                    itemEl.innerHTML = `
+                        <div>
+                            <p class="font-medium">${item.nome}</p>
+                            <p class="text-sm text-gray-600">R$ ${item.preco.toFixed(2).replace('.', ',')}</p>
+                        </div>
+                        <button onclick="removerItem(${index})" class="text-red-500 text-sm">Remover</button>
+                    `;
+                    itensEl.appendChild(itemEl);
+                });
+                totalEl.textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
+            }
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        // Fechar modal do carrinho
+        function fecharCarrinho() {
+            const modal = document.getElementById('modalCarrinho');
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+        }
+
+        // Remover item específico
+        function removerItem(index) {
+            carrinho.splice(index, 1);
+            atualizarCarrinho();
+            abrirCarrinho();
+        }
+
+        // Finalizar compra e enviar mensagem para o WhatsApp
+        function finalizarCompra() {
+            if (carrinho.length === 0) {
+                alert("Adicione itens ao carrinho primeiro!");
+                return;
+            }
+
+            let mensagem = "Olá! Gostaria de fazer um pedido na Nexo Shop:%0A%0A";
+            let total = 0;
+
+            carrinho.forEach(item => {
+                mensagem += `- ${item.nome} - R$ ${item.preco.toFixed(2).replace('.', ',')}%0A`;
+                total += item.preco;
+            });
+
+            mensagem += `%0A*Total: R$ ${total.toFixed(2).replace('.', ',')}*`;
+            mensagem += "%0A%0AInformar forma de entrega e pagamento.";
+
+            // Abrir WhatsApp com mensagem pronta
+            const url = `https://wa.me/${numeroWhatsApp}?text=${mensagem}`;
+            window.open(url, '_blank');
+            
+            // Limpar carrinho após envio
+            carrinho = [];
+            atualizarCarrinho();
+            fecharCarrinho();
+        }
+    </script>
+    
+</body>
+</html>
